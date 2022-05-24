@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap');
+
+/***********
+variables
+***********/
+
+$fontFamily: 'Raleway',
+sans-serif;
+$font: 16px;
+$black: #1f1f1f;
+$pink: #ef1f52;
+$gray: gray;
+$lightgray: #cccac5;
+$boxShadow: #cccac5;
+$white: #fff;
+$transition: .3s ease;
+$padding: 50px 0;
+
+/***********
+mixins
+***********/
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin btn {
+    padding: 15px 40px;
+    background: $pink;
+    border: none;
+    color: $white;
+    font-size: 1rem;
+    margin-top: 20px;
+
+    &:hover {
+        background: $black;
+        cursor: pointer;
+        transition: $transition;
+    }
+}
+
+/***********
+basic styles
+***********/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $fontFamily;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: $black;
+    text-decoration: none;
+
+    &:hover {
+        color: $white;
+        transition: $transition;
+    }
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+
+    @media (max-width: 767px) {
+        width: 90%;
+    }
+}
+
+.headings {
+    padding: $padding;
+    @include flex(space-between, center, row);
+
+    article:first-child {
+        flex: 2;
+
+        @media (max-width: 767px) {
+            flex: 0 0 100%;
+        }
+
+        h2 {
+            font-size: 10rem;
+            color: $lightgray;
+
+            @media (max-width: 767px) {
+                font-size: 8rem;
+            }
+        }
+    }
+
+    article:last-child {
+        flex: 8;
+
+        @media (max-width: 767px) {
+            flex: 0 0 100%;
+        }
+
+        h3 {
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 3rem;
+
+            @media (max-width: 767px) {
+                font-size: 2rem;
+            }
+
+            span {
+                color: $pink
+            }
+
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            font-weight: 200;
+        }
+    }
+}
+
+/***********
+nav style
+***********/
+nav {
+    @include flex(space-between, center, row);
+    background: linear-gradient(to right, $pink, $lightgray);
+    padding: 20px 50px;
+
+    @media (max-width: 767px) {
+        @include flex(center, center, column);
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        line-height: 25px;
+        font-weight: 700;
+
+        span {
+            font-size: 1rem;
+            color: $white;
+        }
+    }
+
+    ul {
+        @include flex(space-between, center, row);
+
+        li {
+            margin: 0 20px;
+            text-transform: uppercase;
+
+            @media (max-width: 767px) {
+                margin: 0 5px;
+            }
+
+            &:nth-child(5) {
+                background: $pink;
+                padding: 10px 20px;
+
+                a {
+                    color: $white;
+
+                    &:hover {
+                        color: $lightgray;
+                    }
+                }
+            }
+
+            &:nth-child(6) {
+                background: $black;
+                padding: 10px 15px;
+
+                a {
+                    color: $white;
+
+                    &:hover {
+                        color: $lightgray;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+/***********
+header style
+***********/
+.mainHeader {
+    background-image: url(../img/header.jpg);
+    background-size: cover;
+    background-position: center right;
+    height: 80vh;
+    @include flex(center, flex-end, column);
+    padding-right: 280px;
+    text-align: right;
+
+    @media (max-width: 767px) {
+        @include flex(center, flex-start, column);
+        padding: 40px;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        line-height: 1.3;
+
+        @media (max-width: 767px) {
+            font-size: 2.5rem;
+            text-align: left;
+        }
+    }
+
+    h3 {
+        font-size: 2rem;
+        color: $pink;
+        padding: 15px 0;
+    }
+
+    p {
+        color: $pink;
+        font-size: 1.2rem;
+    }
+
+    button {
+        @include btn;
+    }
+
+}
+
+/***********
+about style
+***********/
+.about {
+    @include flex(space-between, center, row);
+
+    article:first-child {
+        flex: 1;
+        height: 400px;
+
+        @media (max-width: 767px) {
+            flex: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    article:last-child {
+        flex: 1;
+        height: 400px;
+        background: $black;
+        color: $white;
+        @include flex(center, flex-start, column);
+        padding: 0 40px;
+
+        @media (max-width: 375px) {
+            @include flex(center, flex-start, column);
+        }
+
+        @media (max-width: 767px) {
+            @include flex(center, center, column);
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            
+        }
+        
+    }
+}
+
+/***********
+services style
+***********/
+.services {
+    padding: $padding;
+    @include flex(space-between, center, row);
+
+    article {
+        flex: 0 0 30%;
+        border: 1px solid $black;
+        margin-bottom: 50px;
+        padding: 20px;
+        transition: $transition;
+        @media (max-width: 767px) {
+            flex: 100%;
+        }
+
+        i {
+            font-size: 5rem;
+            color: $pink;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.7rem;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        &:hover {
+            box-shadow: 0 0 20px $lightgray;
+            transform: scale(1.1);
+            transition: $transition;
+        }
+
+    }
+}
+
+/***********
+bussines style
+***********/
+.bussines{
+    background: $black;
+    color: $white;
+    button{
+        @include btn;
+        &:hover{
+            background: $white;
+            color: $pink;
+        }
+    }
+    .counter{
+        @include flex(space-between, center, row);
+        padding: $padding;
+        text-align: center;
+        .col{
+            flex: 1;
+            @media (max-width: 767px) {
+                flex: 100%;
+            }
+            color: $pink;
+            h2{
+                font-size: 4rem;
+            }
+            h4{
+                font-size: 2rem;
+            }
+            hr{
+                border: none;
+                height: 2px;
+                background: $white;
+                width: 80px;
+                margin: 30px auto 0 auto;
+            }
+        }
+    }
+}
+/***********
+team style
+***********/
+.team{
+    @include flex(space-between, center, row);
+    padding-bottom: 100px;
+    text-align: center;
+    article{
+        flex: 0 0 30%;
+        @media (max-width: 767px) {
+        flex:0 0 100%;
+        }
+        img{
+            width: 100%;
+            border-radius: 50%;
+            opacity: .8;
+            border: 15px solid $lightgray;
+            transition: $transition;
+            &:hover{
+                transform: scale(1.1);
+                border: 15px solid $pink;
+            }
+        }
+        h4{
+            color: $pink;
+            font-size: 1.3rem;
+            padding: 20px 0;
+        }
+    }
+}
+
+
+
+/***********
+footer style
+***********/
+footer {
+    padding: 100px 0;
+    background: linear-gradient(to right, $black, $pink);
+    color: $white;
+    text-align: center;
+
+    .container {
+        @include flex(space-between, center, row);
+
+
+        div {
+            flex: 0 0 1;
+
+            @media (max-width: 767px) {
+                flex: 100%;
+                margin-bottom: 20px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                line-height: 25px;
+                font-weight: 700;
+                color: $white;
+
+                span {
+                    font-size: 1rem;
+                    color: $pink;
+                }
+
+                &:hover {
+                    color: $pink;
+                    transition: $transition;
+                }
+            }
+
+        }
+    }
+}
